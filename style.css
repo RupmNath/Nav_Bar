@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+#header {
+    background-color: black;
+    text-transform: capitalize;
+    overflow: hidden;
+}
+
+/* Style for navigation bar */
+.nav_bar {
+    min-height: 10dvh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1000; /* Ensure the nav bar is on top */
+}
+
+/* Navigation logo */
+.nav_logo {
+    font-size: 3rem;
+    text-decoration: none;
+    color: transparent;
+    background: linear-gradient(to right, blue, red);
+    background-clip: text;
+}
+
+/* Style for navigation bar menu */
+.nav_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav_item {
+    list-style: none;
+}
+
+/* Link decoration and animation */
+.nav_link {
+    text-decoration: none;
+    color: transparent;
+    background: linear-gradient(to right, blue, red);
+    background-clip: text;
+    font-size: 2rem;
+    position: relative; 
+}
+
+/* Text options when hovering */
+.nav_link:hover {
+    transition: color 1s ease;
+    color: orangered;
+    font-size: 2.2rem;
+}
+
+/* Underline decoration when hovering */
+.nav_link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: blue;
+    transition: width 0.5s ease, left 0.5s ease;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+.nav_link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Burger menu */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+/* Each horizontal bar of the burger menu */
+.bar {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 6px auto;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background-color: blue;
+}
+
+/* Media function for display with width below 930px */
+@media(max-width: 930px) {
+    .burger {
+        display: block;
+    }
+
+    .burger.active .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .burger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .burger.active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .nav_menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        gap: 0;
+        flex-direction: column;
+        background-color: black;
+        width: 100%;
+        text-align: center;
+        transition: 0.5s;
+        z-index: 999; /* Ensure the menu is above the content */
+    }
+
+    .nav_item {
+        margin: 14px 0;
+    }
+
+    .nav_menu.active {
+        left: 0;
+    }
+}
+
+/* Style for content section */
+#content {
+    background-color: #001027;
+    color: white; 
+    min-height: calc(90dvh); /* Ensure content section takes full height minus nav bar */
+    text-align: center;
+    padding-top: 80px; /* Ensure the content starts below the fixed nav bar */
+    overflow: hidden;
+}
+
+
